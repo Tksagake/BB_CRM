@@ -116,10 +116,11 @@ export default function Navbar({ handleLogout }: NavbarProps) {
             </DropdownMenu>
           </>
         )}
-      </nav>
-         <div className="mt-6">
+        <div className="mt-6">
         <SearchBar />
       </div>
+      </nav>
+         
       <button
         onClick={handleLogout}
         className="mt-8 p-3 bg-red-500 w-full rounded-lg hover:bg-red-600 transition-all duration-300 font-semibold tracking-wide shadow-md flex items-center gap-3 justify-center"
