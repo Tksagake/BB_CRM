@@ -112,7 +112,7 @@ export default function Login() {
 
         <button
           type="submit"
-          className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-500 transition-all duration-300 hover:shadow-md transform hover:-translate-y-0.5 relative"
+          className="w-full py-3 px-4 bg-blue-800 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-md transform hover:-translate-y-0.5 relative"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
