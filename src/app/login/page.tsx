@@ -56,15 +56,15 @@ export default function Login() {
     <div className="w-full max-w-lg bg-white/70 backdrop-blur-md p-8 rounded-xl shadow-lg border border-blue-100 flex flex-col items-center">
       {/* Logo */}
       <img
-        src="https://www.sni.co.ke/wp-content/uploads/2022/06/Logo.jpg"
+        src="/bblogomain.png"
         alt="Sary CRM Logo"
         className="w-35 h-auto mb-4 hover:scale-105 transition-transform duration-300"
       />
 
       {/* Header */}
-      <h3 className="text-2xl font-medium text-center text-gray-700">Hello Blueberry,</h3>
+      
       <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-        Sign in to <span className="text-blue-600">Sary CRM</span>
+        Sign in to <span className="text-blue-600">Blueberry CRM</span>
       </h2>
 
       {/* Error Message */}

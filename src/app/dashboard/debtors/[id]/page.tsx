@@ -507,7 +507,7 @@ doc.text("Blueberry Voyage Ltd", 15, yOffset + 10);
             doc.setTextColor(150, 0, 0); // Dark Red for emphasis
             doc.setTextColor(128, 0, 128); // Purple color
             doc.setFontSize(10);
-            doc.text("8th Floor, Western Heights, Karuna Rd, Westland, Nairobi| E: info@sni.co.ke W: www.sni.co.ke", doc.internal.pageSize.width / 2, footerY + 12, { align: "center" });
+            doc.text("8th Floor, Western Heights, Karuna Rd, Westland, Nairobi| E: info@blueberry-travel.com W: www.blueberry-travel.com", doc.internal.pageSize.width / 2, footerY + 12, { align: "center" });
             doc.text("Mobile: +254 700 314 522 | Office: +254 720 856 052", doc.internal.pageSize.width / 2, footerY + 17, { align: "center" });
             doc.setTextColor(0, 0, 0); // Reset to black color
         };
@@ -558,9 +558,9 @@ const downloadStatement = async () => {
         doc.text("Blueberry Voyage LTD", 70, 20);
         doc.setFontSize(10);
         doc.setTextColor(0, 0, 0);
-        doc.text("8th Floor, Western Heights, Westlands, Nairobi", 70, 25);
+        doc.text("1210-1211, Regal Tower, Business Bay, Dubai, United Arab Emirates", 70, 25);
         doc.text("Phone: +254 700 314 522", 70, 30);
-        doc.text("Email: info@sni.co.ke", 70, 35);
+        doc.text("Email: info@blueberry-travel.com", 70, 35);
         doc.text("Nairobi, Kenya", 70, 40);
 
         // Title Section
@@ -668,7 +668,7 @@ const downloadStatement = async () => {
         // Signature text
         doc.setFontSize(11);
         doc.setTextColor(0, 0, 0);
-        doc.text("Hillary Wekesa", (pageWidth / 2) - shiftLeft, doc.internal.pageSize.height - 55, { align: "center" });
+        doc.text("MAN IN CHARGE", (pageWidth / 2) - shiftLeft, doc.internal.pageSize.height - 55, { align: "center" });
         doc.text("Managing Partner", (pageWidth / 2) - shiftLeft, doc.internal.pageSize.height - 50, { align: "center" });
 
         // Footer Function
@@ -748,9 +748,9 @@ const downloadStatement = async () => {
     doc.text("Blueberry Voyage LTD", 70, 20);
     doc.setFontSize(10);
     doc.setTextColor(0, 0, 0);
-    doc.text("8th Floor, Western Heights, Westlands, Nairobi", 70, 25);
+    doc.text("1210-1211, Regal Tower, Business Bay, Dubai, United Arab Emirates", 70, 25);
     doc.text("Phone: +254 700 314 522", 70, 30);
-    doc.text("Email: info@sni.co.ke", 70, 35);
+    doc.text("Email: info@blueberry-travel.com", 70, 35);
     doc.text("Nairobi, Kenya", 70, 40);
 
     // Title Section

@@ -214,7 +214,7 @@ export default function ReportsPage() {
         doc.setTextColor(0, 0, 0);
         doc.text("8th Floor, Western Heights, Westlands, Nairobi", 70, 25);
         doc.text("Phone: +254 700 314 522", 70, 30);
-        doc.text("Email: info@sni.co.ke", 70, 35);
+        doc.text("Email: info@blueberry-travel.com", 70, 35);
         doc.text("Nairobi, Kenya", 70, 40);
   
         // Title Section
