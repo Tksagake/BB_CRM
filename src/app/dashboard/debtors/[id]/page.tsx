@@ -827,7 +827,7 @@ const downloadStatement = async () => {
 
     // Signature Text
     doc.setFontSize(11);
-    doc.text("Hillary Wekesa", (pageWidth / 2) - 12, lineY + 5, { align: "center" });
+    doc.text("SIGNEE", (pageWidth / 2) - 12, lineY + 5, { align: "center" });
     doc.text("Managing Partner", (pageWidth / 2) - 12, lineY + 10, { align: "center" });
 
     // Footer for Debt Card
