@@ -12,6 +12,7 @@ import {
   ChevronDown,
   Download,
 } from "lucide-react";
+import SearchBar from "./SearchBar";
 
 interface NavbarProps {
   handleLogout: () => Promise<void>;
@@ -116,7 +117,9 @@ export default function Navbar({ handleLogout }: NavbarProps) {
           </>
         )}
       </nav>
-
+         <div className="mt-6">
+        <SearchBar />
+      </div>
       <button
         onClick={handleLogout}
         className="mt-8 p-3 bg-red-500 w-full rounded-lg hover:bg-red-600 transition-all duration-300 font-semibold tracking-wide shadow-md flex items-center gap-3 justify-center"
