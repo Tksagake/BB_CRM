@@ -540,9 +540,9 @@ const downloadStatement = async () => {
             .single();
 
         const [letterheadImg, stampImg, signatureImg] = await Promise.all([
-            loadImage('https://res.cloudinary.com/dylmsnibf/image/upload/v1740623140/sary_2_fjgiao.jpg') as Promise<HTMLImageElement>,
-            loadImage('https://res.cloudinary.com/dylmsnibf/image/upload/v1741970134/more_squeezed_image_1_lss3wl.png') as Promise<HTMLImageElement>,
-            loadImage('https://res.cloudinary.com/dylmsnibf/image/upload/v1741969895/WhatsApp_Image_2025-03-14_at_19.23.39_6437f7fa-removebg-preview_k1r8kl.png') as Promise<HTMLImageElement>,
+            loadImage('/bblogomain.png') as Promise<HTMLImageElement>,
+            loadImage('/bblogomain.png') as Promise<HTMLImageElement>,
+            loadImage('/bblogomain.png') as Promise<HTMLImageElement>,
         ]);
 
         const doc = new jsPDF();
@@ -707,9 +707,9 @@ const downloadStatement = async () => {
         .single();
 
       const [letterheadImg, stampImg, signatureImg] = await Promise.all([
-        loadImage('https://res.cloudinary.com/dylmsnibf/image/upload/v1740623140/sary_2_fjgiao.jpg'),
-        loadImage('https://res.cloudinary.com/dylmsnibf/image/upload/v1741970134/more_squeezed_image_1_lss3wl.png'),
-        loadImage('https://res.cloudinary.com/dylmsnibf/image/upload/v1741969895/WhatsApp_Image_2025-03-14_at_19.23.39_6437f7fa-removebg-preview_k1r8kl.png'),
+        loadImage('/bblogomain.png'),
+        loadImage('/bblogomain.png'),
+        loadImage('/bblogomain.png'),
       ]);
 
     const doc = new jsPDF();

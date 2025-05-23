@@ -159,9 +159,12 @@ export default function UsersPage() {
         {/* Users Table */}
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-3xl font-bold text-gray-800 mb-2"> Users List</h2>
-          <h1 className="text-lg mb-4">When Creating a client, ensure that their FULL NAME matches the CLIENT option you provided when importing debtors</h1>
+          <p className="text-gray-600 mb-4">Manage your users here.</p>
+
+          {/* Loading State */}
           {loading ? (
             <p>Loading users...</p>
+            
           ) : (
             <table className="w-full border-collapse border border-gray-200">
               <thead>
