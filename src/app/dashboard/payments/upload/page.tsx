@@ -7,7 +7,7 @@ import router from "next/router";
 
 export default function UploadPoPPage() {
   const supabase = createClientComponentClient();
-  const [userRole, setUserRole] = useState<"admin" | "agent" | null>(null);
+  const [userRole, setUserRole] = useState<"admin" | "agent" | "client" |null>(null);
   const [debtors, setDebtors] = useState<any[]>([]);
   const [filteredDebtors, setFilteredDebtors] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");

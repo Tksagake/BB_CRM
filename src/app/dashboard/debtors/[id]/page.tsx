@@ -105,7 +105,7 @@ export default function DebtorDetailsPage() {
     { value: "23", label: "PTP" },
     { value: "7", label: "Scheduled Payment" },
     { value: "8", label: "One-Off Payment" },
-    { value: "9", label: "Payment Confirmed by Client" },
+    { value: "9", label: "Payment Confirmed by Branch Manager" },
     { value: "10", label: "Debt Settled" },
     { value: "14", label: "Non-Committal" },
     { value: "11", label: "Disputing" },
@@ -464,15 +464,15 @@ export default function DebtorDetailsPage() {
       doc.setFont("times", "normal");
 
       const bodyText = `
-  We refer to the subject and contractual agreement with our client ${debtor?.client}.
+  We refer to the subject and contractual agreement with our ${debtor?.client} branch.
 
-  Please note that you have failed to honour payments, neglected and/or refused to pay back KES ${debtor?.debt_amount.toLocaleString()} owed to our client ${debtor?.client} for account(s)- ${debtor?.debtor_name}.
+  Please note that you have failed to honour payments, neglected and/or refused to pay back KES ${debtor?.debt_amount.toLocaleString()} owed to our branch ${debtor?.client} for account(s)- ${debtor?.debtor_name}.
 
-  TAKE NOTE that you have ignored all our client’s reminders and requests and/or appeals to settle this debt. You have further failed to honor the agreed payment plans and to far extent given false payment promises.
+  TAKE NOTE that you have ignored all our  reminders and requests and/or appeals to settle this debt. You have further failed to honor the agreed payment plans and to far extent given false payment promises.
 
-  TAKE FURTHER NOTICE that Sary Network International Ltd being a fully appointed agent for ${debtor?.client} hereby formally demands settlement of the FULL amount of KES ${debtor?.debt_amount.toLocaleString()} within 7 DAYS as owed to our client from the date hereof, failure to which we shall proceed and institute recovery measures for the said amount plus costs.
+  TAKE FURTHER NOTICE that BlueBerry Voyage Ltd  hereby formally demands settlement of the FULL amount of KES ${debtor?.debt_amount.toLocaleString()} within 7 DAYS as owed from the date hereof, failure to which we shall proceed and institute recovery measures for the said amount plus costs.
 
-  Payment SHOULD be made directly to our client’s bank account and the payment receipt shared to finance@sni.co.ke BEFORE ${formattedDueDate}.
+  Payment SHOULD be made directly to our bank account and the payment receipt shared to us BEFORE ${formattedDueDate}.
 
   Please take further note that a delay in payment beyond the aforementioned date shall constitute automatic recovery costs of 20% of the total debt; this cost shall be incurred by yourselves.
 
@@ -495,9 +495,9 @@ doc.addImage(signature as HTMLImageElement, "PNG", 15, yOffset + 5, 60, 20);
 
 // Move Text Below the Signature
 yOffset += 30;
-doc.text("Susan Karigi", 15, yOffset);
+doc.text("Director", 15, yOffset);
 doc.text("Director", 15, yOffset + 5);
-doc.text("Sary Network International Ltd", 15, yOffset + 10);
+doc.text("Blueberry Voyage Ltd", 15, yOffset + 10);
 
       // Footer Function
         const renderDebtCardFooter = async (doc: jsPDF, currentTimestamp: string) => {
@@ -555,7 +555,7 @@ const downloadStatement = async () => {
         // Header Section
         doc.setFontSize(12);
         doc.setTextColor(0, 0, 128);
-        doc.text("Sary Network International", 70, 20);
+        doc.text("Blueberry Voyage LTD", 70, 20);
         doc.setFontSize(10);
         doc.setTextColor(0, 0, 0);
         doc.text("8th Floor, Western Heights, Westlands, Nairobi", 70, 25);
@@ -584,7 +584,7 @@ const downloadStatement = async () => {
 
         doc.setFontSize(11);
         doc.setTextColor(0, 0, 0);
-        doc.text(`Client: ${debtor?.client}`, 15, yOffset + 10);
+        doc.text(`Branch: ${debtor?.client}`, 15, yOffset + 10);
         doc.text(`Phone: ${debtor?.debtor_phone}`, 15, yOffset + 15);
         doc.text(`Email: ${debtor?.debtor_email}`, 15, yOffset + 20);
         doc.text(`Debt Amount: KES ${debtor?.debt_amount.toLocaleString()}`, 15, yOffset + 25);
@@ -677,7 +677,7 @@ const downloadStatement = async () => {
 
             doc.setFontSize(10);
             doc.setTextColor(128, 128, 128);
-            doc.text("This is an official statement from Sary Network International.", 15, footerY);
+            doc.text("This is an official statement from Blueberry Voyage LTD", 15, footerY);
             doc.text(`Generated on: ${currentTimestamp} by: ${userData?.full_name}`, 15, doc.internal.pageSize.height - 35);
 
             doc.setFontSize(9);
@@ -745,7 +745,7 @@ const downloadStatement = async () => {
     // Header Section
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 128);
-    doc.text("Sary Network International", 70, 20);
+    doc.text("Blueberry Voyage LTD", 70, 20);
     doc.setFontSize(10);
     doc.setTextColor(0, 0, 0);
     doc.text("8th Floor, Western Heights, Westlands, Nairobi", 70, 25);
@@ -769,7 +769,7 @@ const downloadStatement = async () => {
     doc.text(`Debtor: ${debtor?.debtor_name}`, 15, yOffset);
     doc.setFontSize(11);
     doc.setTextColor(0, 0, 0);
-    yOffset = addWrappedText(doc, "Client", debtor?.client || "N/A", 15, yOffset + 10);
+    yOffset = addWrappedText(doc, "Branch", debtor?.client || "N/A", 15, yOffset + 10);
     yOffset = addWrappedText(doc, "Phone", debtor?.debtor_phone || "N/A", 15, yOffset + 5);
     yOffset = addWrappedText(doc, "Email", debtor?.debtor_email || "N/A", 15, yOffset + 5);
     yOffset = addWrappedText(doc, "Debt Amount", `KES ${debtor?.debt_amount.toLocaleString()}`, 15, yOffset + 5);
@@ -833,7 +833,7 @@ const downloadStatement = async () => {
     // Footer for Debt Card
     doc.setFontSize(10);
     doc.setTextColor(128, 128, 128);
-    doc.text("This is an official debt card of Sary Network International.", 15, doc.internal.pageSize.height - 20);
+    doc.text("This is an official debt card of Blueberry Voyage LTD.", 15, doc.internal.pageSize.height - 20);
     doc.text(`Generated on: ${currentTimestamp} by: ${userData?.full_name}`, 15, doc.internal.pageSize.height - 30);
 
     // Save the document
@@ -964,43 +964,38 @@ const initiateCall = (phoneNumber: string) => {
             </button>
           )}
         </div>
-
-        {/* Call, SMS, Email, and WhatsApp Buttons */}
-        <div className="flex gap-4 mb-6">
-  {userRole !== 'client' && (
-    <>
-      <button
-        onClick={handleCallDebtor}
-        className="bg-green-600 text-white px-4 py-2 rounded-md flex items-center"
-      >
-        <FaPhone className="mr-2" /> Call Debtor
-      </button>
-      <button
-        onClick={handleSendSms}
-        className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center"
-      >
-        <FaSms className="mr-2" /> Send SMS
-      </button>
-      <button
-        onClick={handleSendEmail}
-        className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center"
-      >
-        <FaEnvelope className="mr-2" /> Send Email
-      </button>
-      <button
-        onClick={handleSendWhatsApp}
-        className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center"
-      >
-        <FaWhatsapp className="mr-2" /> Send WhatsApp
-      </button>
-      <button
-        onClick={() => generateDemandLetterPDF(debtor)}
-        className="bg-red-600 text-white px-4 py-2 rounded-md flex items-center"
-      >
-        <FaFilePdf className="mr-2" /> Download Demand Letter
-      </button>
-    </>
-  )}
+{/* Call, SMS, Email, and WhatsApp Buttons */}
+<div className="flex gap-4 mb-6">
+  <button
+    onClick={handleCallDebtor}
+    className="bg-green-600 text-white px-4 py-2 rounded-md flex items-center"
+  >
+    <FaPhone className="mr-2" /> Call Debtor
+  </button>
+  <button
+    onClick={handleSendSms}
+    className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center"
+  >
+    <FaSms className="mr-2" /> Send SMS
+  </button>
+  <button
+    onClick={handleSendEmail}
+    className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center"
+  >
+    <FaEnvelope className="mr-2" /> Send Email
+  </button>
+  <button
+    onClick={handleSendWhatsApp}
+    className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center"
+  >
+    <FaWhatsapp className="mr-2" /> Send WhatsApp
+  </button>
+  <button
+    onClick={() => generateDemandLetterPDF(debtor)}
+    className="bg-red-600 text-white px-4 py-2 rounded-md flex items-center"
+  >
+    <FaFilePdf className="mr-2" /> Download Demand Letter
+  </button>
   <button
     onClick={downloadStatement}
     className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center"
@@ -1015,11 +1010,12 @@ const initiateCall = (phoneNumber: string) => {
   </button>
 </div>
 
+       
         {/* Debtor Basic Info */}
         <div className="bg-white p-6 rounded-lg shadow-md mb-6">
           <h3 className="text-xl font-semibold">Basic Information</h3>
           <p><strong>Name:</strong> {debtor?.debtor_name}</p>
-          <p><strong>Client:</strong> {debtor?.client}</p>
+          <p><strong>Branch:</strong> {debtor?.client}</p>
           <p><strong>Phone:</strong> {debtor?.debtor_phone}</p>
           <p><strong>Secondary Phone:</strong> {debtor?.debtor_secondary_phone || "N/A"}</p>
           <p><strong>Email:</strong> {debtor?.debtor_email || "N/A"}</p>
@@ -1277,7 +1273,7 @@ const initiateCall = (phoneNumber: string) => {
                     value={editedDebtor.assigned_to || ""}
                     onChange={(e) => setEditedDebtor({ ...editedDebtor, assigned_to: e.target.value })}
                   >
-                    <option value="">Select an agent</option>
+                    <option value="">Select an Account Manager</option>
                     {agents.map((agent) => (
                       <option key={agent.id} value={agent.id}>
                         {agent.full_name}

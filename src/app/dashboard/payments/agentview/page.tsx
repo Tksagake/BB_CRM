@@ -58,7 +58,7 @@ export default function PaymentsPage() {
       const { data, error } = await supabase.from("debtors").select("client");
 
       if (error) {
-        console.error("Error fetching clients:", error.message);
+        console.error("Error fetching branch details:", error.message);
       } else {
         const uniqueClients = [...new Set(data.map((item) => item.client))];
         setClients(uniqueClients);
@@ -128,7 +128,7 @@ export default function PaymentsPage() {
 
   // Function to download payments as CSV
   const downloadCsv = () => {
-    const headers = ["Debtor Name", "Client", "Amount", "Payment Date"];
+    const headers = ["Debtor Name", "Branch", "Amount", "Payment Date"];
     const rows = payments
       .filter((payment) => payment.verified)
       .map((payment) => [
@@ -261,7 +261,7 @@ export default function PaymentsPage() {
             <thead className="bg-blue-900 text-white">
               <tr>
                 <th className="p-4 text-left">Debtor Name</th>
-                <th className="p-4 text-left">Client</th>
+                <th className="p-4 text-left">Branch</th>
                 <th className="p-4 text-left">Amount</th>
                 <th className="p-4 text-left">Payment Date</th>
                 <th className="p-4 text-left">Uploaded At</th>

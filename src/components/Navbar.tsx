@@ -45,11 +45,14 @@ export default function Navbar({ handleLogout }: NavbarProps) {
 
   return (
     <aside className="w-72 bg-blue-900 bg-opacity-90 backdrop-blur-lg text-white p-6 h-screen flex flex-col fixed left-0 top-0 shadow-xl overflow-y-auto">
-      <a href="/dashboard">
-        <img src="https://www.sni.co.ke/wp-content/uploads/2022/06/Logo.jpg" alt="Logo" className="w-42 mb-4"  />
-      </a>
+      <h2 className="text-2xl font-bold mb-6 text-center text-white">
+        BLUEBERRY VOYAGE LIMITED
+        </h2>
       <nav className="flex-1 space-y-3">
-       
+       <DropdownMenu label="Dashboard" icon={<Home />}>
+          <NavItem link="/dashboard" label="Overview" activePath={pathname} />
+        </DropdownMenu>
+      
         <DropdownMenu label="Debtors" icon={<Users />}>
           {userRole !== "client" && (
             <NavItem link="/dashboard/debtors/follow-ups" label="Follow-Ups" activePath={pathname} />

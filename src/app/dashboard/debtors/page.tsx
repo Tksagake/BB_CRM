@@ -360,11 +360,11 @@ export default function DebtorsPage() {
     }
 
     if (!newAgentId) {
-      setMessage({ text: "Please select a new agent.", type: "error" });
+      setMessage({ text: "Please select a new Account Manager.", type: "error" });
       return;
     }
 
-    if (!confirm("Are you sure you want to change the assigned agent for the selected debtors?")) return;
+    if (!confirm("Are you sure you want to change the assigned Account Manager for the selected debtors?")) return;
 
     const { error } = await supabase
       .from("debtors")
@@ -372,7 +372,7 @@ export default function DebtorsPage() {
       .in("id", selectedDebtors);
 
     if (error) {
-      setMessage({ text: `Error changing assigned agent: ${error.message}`, type: "error" });
+      setMessage({ text: `Error changing assigned Account Manager: ${error.message}`, type: "error" });
     } else {
       setDebtors((prev) =>
         prev.map((debtor) =>
@@ -385,7 +385,7 @@ export default function DebtorsPage() {
         )
       );
       setSelectedDebtors([]); // Reset selection
-      setMessage({ text: "Assigned agent changed successfully! Refresh page to see the changes", type: "success" });
+      setMessage({ text: "Assigned Account Manager changed successfully! Refresh page to see the changes", type: "success" });
     }
   };
 
@@ -435,7 +435,7 @@ export default function DebtorsPage() {
                 onChange={(e) => setNewAgentId(e.target.value)}
                 className="p-2 border rounded-md"
               >
-                <option value="">Select New Agent</option>
+                <option value="">Select New Account Manager</option>
                 {agents.map((agent) => (
                   <option key={agent.id} value={agent.id}>
                     {agent.name}
@@ -446,7 +446,7 @@ export default function DebtorsPage() {
                 onClick={handleBulkChangeAgent}
                 className="bg-blue-600 text-white px-4 py-2 rounded-md"
               >
-                Change Agent
+                Change Account Manager
               </button>
             </div>
           )}
@@ -495,7 +495,7 @@ export default function DebtorsPage() {
                   onChange={(e) => setFilters({ ...filters, agent: e.target.value })}
                   className="p-2 border rounded-md w-full"
                 >
-                  <option value="">All Agents</option>
+                  <option value="">All Account Managers</option>
                   {agents.map((agent) => (
                     <option key={agent.id} value={agent.id}>
                       {agent.name}
@@ -520,7 +520,7 @@ export default function DebtorsPage() {
                 onChange={(e) => setFilters({ ...filters, client: e.target.value })}
                 className="p-2 border rounded-md w-full"
               >
-                <option value="">All Clients</option>
+                <option value="">All Branches</option>
                 {clients.map((client) => (
                   <option key={client} value={client}>
                     {client}
@@ -554,13 +554,13 @@ export default function DebtorsPage() {
               <tr className="bg-blue-900 text-white">
                 {userRole === "admin" && <th className="px-4 py-2 border">Select</th>}
                 <th className="px-4 py-2 border">Debtor Name</th>
-                <th className="px-4 py-2 border">Client (Company)</th>
+                <th className="px-4 py-2 border">Branch (Manager)</th>
                 <th className="px-4 py-2 border">Phone</th>
                 <th className="px-4 py-2 border">Total Debt</th>
                 <th className="px-4 py-2 border">Total Paid</th>
                 <th className="px-4 py-2 border">Remaining Balance</th>
                 <th className="px-4 py-2 border">Next Follow-Up</th>
-                {userRole !== "client" && <th className="px-4 py-2 border">Assigned Agent</th>}
+                {userRole !== "client" && <th className="px-4 py-2 border">Account Manager</th>}
                 <th className="px-4 py-2 border">Deal Stage</th>
                 {userRole === "admin" && <th className="px-4 py-2 border">Actions</th>}
               </tr>

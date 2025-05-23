@@ -5,22 +5,13 @@ interface DashboardHeaderProps {
 }
 
 const motivationalQuotes = [
-  "The only way to do great work is to love what you do. — Steve Jobs",
-  "Success is not final, failure is not fatal: It is the courage to continue that counts. — Winston Churchill",
-  "Believe you can and you're halfway there. — Theodore Roosevelt",
-  "Hardships often prepare ordinary people for an extraordinary destiny. — C.S. Lewis",
-  "The best way to predict the future is to create it. — Peter Drucker",
-  "It does not matter how slowly you go as long as you do not stop. — Confucius",
-  "Success is not how high you have climbed, but how you make a positive difference to the world. — Roy T. Bennett",
-  "The only limit to our realization of tomorrow will be our doubts of today. — Franklin D. Roosevelt",
-  "The best way to get started is to quit talking and begin doing. — Walt Disney",
-  "Don't watch the clock; do what it does. Keep going. — Sam Levenson",
-  "The future belongs to those who believe in the beauty of their dreams. — Eleanor Roosevelt",
-  "You are never too old to set another goal or to dream a new dream. — C.S. Lewis",
+ 
   "Sary Networks International LTD wishes you a great day!",
-  "Success usually comes to those who are too busy to be looking for it. — Henry David Thoreau",
-  "Opportunities don't happen. You create them. — Chris Grosser",
-  "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart. — Roy T. Bennett",
+  "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+  "The only way to do great work is to love what you do.",
+  "Believe you can and you're halfway there.",
+  "Success usually comes to those who are too busy to be looking for it.",
+  
 ];
 
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userFullName }) => {

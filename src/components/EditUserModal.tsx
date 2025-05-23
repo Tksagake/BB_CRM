@@ -78,8 +78,8 @@ export default function EditUserModal({ isOpen, onClose, user, onUpdate }: EditU
           value={editedUser.role}
           onChange={handleChange}
         >
-          <option value="agent">Agent</option>
-          <option value="client">Client</option>
+          <option value="agent">Account Manager</option>
+          <option value="client">Branch Manager</option>
           <option value="admin">Admin</option>
         </select>
 

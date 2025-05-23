@@ -132,6 +132,9 @@ export default function EnhancedDashboard() {
           </div>
         )}
       </main>
+      <footer className="w-full text-center py-4 text-gray-500 text-sm border-t bg-white fixed bottom-0 left-0 z-50">
+        Powered by Sary Network International LTD.
+      </footer>
     </div>
   );
 }

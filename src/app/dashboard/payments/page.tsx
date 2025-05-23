@@ -212,7 +212,7 @@ export default function PaymentsPage() {
           {/* Client Filter */}
           {userRole !== "client" && (
             <div>
-              <label className="block mb-1">Filter by client:</label>
+              <label className="block mb-1">Filter by Branch:</label>
               <select
                 value={clientFilter}
                 onChange={(e) => setClientFilter(e.target.value)}
@@ -257,7 +257,7 @@ export default function PaymentsPage() {
             <thead className="bg-blue-900 text-white">
               <tr>
                 <th className="p-4 text-left">Debtor Name</th>
-                <th className="p-4 text-left">Client</th>
+                <th className="p-4 text-left">Branch</th>
                 <th className="p-4 text-left">Collection Officer</th> {/* New column */}
                 <th className="p-4 text-left">Amount</th>
                 <th className="p-4 text-left">Payment Date</th>

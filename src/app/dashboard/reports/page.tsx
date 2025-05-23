@@ -30,7 +30,7 @@ const dealStages = {
   "23": "PTP",
   "7": "Scheduled Payment",
   "8": "One-Off Payment",
-  "9": "Payment Confirmed by Client",
+  "9": "Payment Confirmed by Branch Manager",
   "10": "Debt Settled",
   "14": "Non-Committal",
   "11": "Disputing",
@@ -436,18 +436,18 @@ const renderFooter = (doc: jsPDF, timestamp: string) => {
           <h3 className="text-lg font-semibold mb-4">Search Leads & Generate Reports</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block font-medium">Client:</label>
+              <label className="block font-medium">Branches:</label>
               <select className="border p-2 rounded-md w-full" name="client" onChange={handleFilterChange}>
-                <option value="">All Clients</option>
+                <option value="">All Branches</option>
                 {clients.map((client) => (
                   <option key={client} value={client}>{client}</option>
                 ))}
               </select>
             </div>
             <div>
-              <label className="block font-medium">Assigned Agent:</label>
+              <label className="block font-medium">Account Manager:</label>
               <select className="border p-2 rounded-md w-full" name="assignedTo" onChange={handleFilterChange}>
-                <option value="">All Agents</option>
+                <option value="">All Acc. Managers</option>
                 {agents.map((agent) => (
                   <option key={agent.id} value={agent.id}>{agent.name}</option>
                 ))}
@@ -542,7 +542,7 @@ const renderFooter = (doc: jsPDF, timestamp: string) => {
                     />
                     <h4 className="text-lg font-semibold">{debtor.debtor_name}</h4>
                   </div>
-                  <p><strong>Client:</strong> {debtor.client}</p>
+                  <p><strong>Branch:</strong> {debtor.client}</p>
                   <p><strong>Phone:</strong> {debtor.debtor_phone}</p>
                   <p><strong>Email:</strong> {debtor.debtor_email}</p>
                   <p><strong>Debt Amount:</strong> KES {debtor.debt_amount.toLocaleString()}</p>

@@ -62,6 +62,7 @@ export default function Login() {
       />
 
       {/* Header */}
+      <h3 className="text-2xl font-medium text-center text-gray-700">Hello Blueberry,</h3>
       <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
         Sign in to <span className="text-blue-600">Sary CRM</span>
       </h2>
@@ -104,8 +105,7 @@ export default function Login() {
         </div>
 
         <ReCAPTCHA
-          sitekey="6LesJScrAAAAAL_X7cQbRCtQt9Ny12TDUqX10lLX" // Replace with your reCAPTCHA site key6LesJScrAAAAAL_X7cQbRCtQt9Ny12TDUqX10lLX
-          className="my-4"
+          sitekey="6LesJScrAAAAAL_X7cQbRCtQt9Ny12TDUqX10lLX" 
           onChange={(token) => setRecaptchaToken(token)}
         />
 

@@ -232,7 +232,7 @@ export default function MonthlyReportsPage() {
     doc.text("Monthly Report", 20, 10);
     autoTable(doc, {
       startY: 20,
-      head: [["Agent", "Payments Collected", "Follow-Ups", "PTPs"]],
+      head: [["Account Manager", "Payments Collected", "Follow-Ups", "PTPs"]],
       body: agentPerformance.map((agent) => [
         agent.agentName,
         `KES ${agent.payments.toLocaleString()}`,
@@ -282,11 +282,11 @@ export default function MonthlyReportsPage() {
 
             {/* Agent Performance */}
             <div className="bg-white p-6 shadow-md rounded-lg mb-6">
-              <h3 className="text-lg font-semibold mb-4">👤 Agent Performance</h3>
+              <h3 className="text-lg font-semibold mb-4">👤 Account Managers Performance</h3>
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="text-left">Agent</th>
+                    <th className="text-left">Account Manager</th>
                     <th className="text-left">Payments Collected</th>
                     <th className="text-left">Follow-Ups</th>
                     <th className="text-left">PTPs</th>

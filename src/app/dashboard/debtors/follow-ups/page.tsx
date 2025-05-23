@@ -54,7 +54,7 @@ export default function FollowUpsPage() {
     { value: "23", label: "PTP" },
     { value: "7", label: "Scheduled Payment" },
     { value: "8", label: "One-Off Payment" },
-    { value: "9", label: "Payment Confirmed by Client" },
+    { value: "9", label: "Payment Confirmed by Branch Management" },
     { value: "10", label: "Debt Settled" },
     { value: "14", label: "Non-Committal" },
     { value: "11", label: "Disputing" },
@@ -95,7 +95,7 @@ export default function FollowUpsPage() {
       "Follow-Up Date",
       "Deal Stage",
       "Notes",
-      "Assigned Agent",
+      "Account Manager",
     ];
 
     const rows = data.map((debtor) => [
@@ -306,7 +306,7 @@ function FollowUpTable({
             <thead className="bg-blue-900 text-white">
               <tr>
                 <th className="p-4 text-left">Debtor Name</th>
-                <th className="p-4 text-left">Client (Company)</th>
+                <th className="p-4 text-left">Branch</th>
                 <th className="p-4 text-left">Phone</th>
                 <th className="p-4 text-left">Total Debt</th>
                 <th className="p-4 text-left">Total Paid</th>
@@ -314,7 +314,7 @@ function FollowUpTable({
                 <th className="p-4 text-left">Follow-Up Date</th>
                 <th className="p-4 text-left">Deal Stage</th>
                 <th className="p-4 text-left">Notes</th>
-                <th className="p-4 text-left">Assigned Agent</th>
+                <th className="p-4 text-left">Account Manager</th>
               </tr>
             </thead>
             <tbody>

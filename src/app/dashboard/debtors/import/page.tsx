@@ -258,7 +258,7 @@ Jane Smith,0987654321,2000,ID456,jane.smith@example.com,456 Elm St,tag2`;
             />
             <input
               type="text"
-              placeholder="Client"
+              placeholder="BRANCH"
               value={client}
               onChange={(e) => setClient(e.target.value)}
               className="p-2 border rounded-md w-full"
@@ -284,7 +284,7 @@ Jane Smith,0987654321,2000,ID456,jane.smith@example.com,456 Elm St,tag2`;
               onChange={(e) => setSelectedAgent(e.target.value)}
               className="p-2 border rounded-md w-full"
             >
-              <option value="">Select Agent (Optional)</option>
+              <option value="">Select Account Manager(s) (Optional)</option>
               {agents.map((agent) => (
                 <option key={agent.id} value={agent.id}>
                   {agent.name}
@@ -386,7 +386,7 @@ Jane Smith,0987654321,2000,ID456,jane.smith@example.com,456 Elm St,tag2`;
 
               {/* Agent Selection for Bulk Import */}
               <div className="mb-4">
-                <h4 className="font-semibold mb-2">Assign Agents (Optional)</h4>
+                <h4 className="font-semibold mb-2">Assign Account Manager(s) (Optional)</h4>
                 <div className="grid grid-cols-3 gap-2">
                   {agents.map((agent) => (
                     <label key={agent.id} className="flex items-center">

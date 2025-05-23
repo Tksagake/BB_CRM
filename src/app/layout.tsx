@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BB-Sary CRM",
-  description: "Our streamlined credit collection CRM",
+  description: "Powered by Sary",
 };
 
 export default function RootLayout({

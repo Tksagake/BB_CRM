@@ -146,7 +146,7 @@ export default function PtpPage() {
 
   // Function to download ptps as CSV
   const downloadCsv = () => {
-    const headers = ["Debtor Name", "Client", "PTP Amount", "Total Debt", "PTP Date", "Agent", "Status", "Amount Paid"];
+    const headers = ["Debtor Name", "Client", "PTP Amount", "Total Debt", "PTP Date", "Account Manager", "Status", "Amount Paid"];
     const rows = ptps.map((ptp) => [
       `"${ptp.debtors?.debtor_name || "Unknown"}"`,
       `"${ptp.debtors?.client || "Unknown"}"`,
@@ -259,7 +259,7 @@ export default function PtpPage() {
           {/* Client Filter */}
           {userRole !== "client" && (
             <div>
-              <label className="block mb-1">Filter by client:</label>
+              <label className="block mb-1">Filter by Branch:</label>
               <select
                 value={clientFilter}
                 onChange={(e) => setClientFilter(e.target.value)}
@@ -309,11 +309,11 @@ export default function PtpPage() {
               <thead className="bg-blue-900 text-white">
                 <tr>
                   <th className="px-4 py-2 border">Debtor Name</th>
-                  <th className="px-4 py-2 border">Client</th>
+                  <th className="px-4 py-2 border">Branch</th>
                   <th className="px-4 py-2 border">PTP Amount</th>
                   <th className="px-4 py-2 border">Total Debt</th>
                   <th className="px-4 py-2 border">PTP Date</th>
-                  {userRole !== "client" && <th className="px-4 py-2 border">Agent</th>}
+                  {userRole !== "client" && <th className="px-4 py-2 border">Account Manager</th>}
                   <th className="px-4 py-2 border">Status</th>
                   <th className="px-4 py-2 border">Amount Paid</th>
                   <th className="px-4 py-2 border">Actions</th>

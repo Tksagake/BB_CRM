@@ -209,7 +209,7 @@ export default function AgentPerformancePage() {
     <div className="flex min-h-screen w-full">
        <Navbar handleLogout={async () => { await supabase.auth.signOut(); await router.push("/login"); }} />
       <main className="ml-64 flex-1 p-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Agent Performance</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">Account Manager Performance</h2>
 
         {/* Month Selector */}
         <div className="mb-6">
@@ -223,7 +223,7 @@ export default function AgentPerformancePage() {
         </div>
 
         {loading ? (
-          <p className="text-center mt-10 text-xl">Loading agent performance...</p>
+          <p className="text-center mt-10 text-xl">Loading performance...</p>
         ) : (
           <>
             {/* Agent Performance Table */}
@@ -231,7 +231,7 @@ export default function AgentPerformancePage() {
               <table className="w-full border-collapse border border-gray-200">
                 <thead>
                   <tr className="bg-blue-900 text-white">
-                    <th className="px-4 py-2 border">Agent</th>
+                    <th className="px-4 py-2 border">Account Manager</th>
                     <th className="px-4 py-2 border">Payments Collected</th>
                     <th className="px-4 py-2 border">Follow-Ups</th>
                     <th className="px-4 py-2 border">PTPs</th>
@@ -252,7 +252,7 @@ export default function AgentPerformancePage() {
 
             {/* Agent Performance Comparison Chart */}
             <div className="bg-white p-6 shadow-md rounded-lg mb-6">
-              <h3 className="text-lg font-semibold mb-4">Agent Performance Comparison</h3>
+              <h3 className="text-lg font-semibold mb-4">Account Manager Performance Comparison</h3>
               <Bar data={performanceChartData} />
             </div>
           </>

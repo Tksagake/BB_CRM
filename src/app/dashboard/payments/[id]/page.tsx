@@ -143,7 +143,7 @@ export default function PaymentDetailsPage() {
 
         {payment ? (
           <>
-            <p><strong>Client Name:</strong> {payment.debtor?.debtor_name || "Unknown"}</p>
+            <p><strong>Branch:</strong> {payment.debtor?.debtor_name || "Unknown"}</p>
             <p><strong>Amount:</strong> KES {payment.amount.toLocaleString()}</p>
             <p><strong>Status:</strong> {payment.verified ? "✅ Verified" : "⏳ Pending"}</p>
 
