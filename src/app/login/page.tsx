@@ -64,7 +64,7 @@ export default function Login() {
       {/* Header */}
       
       <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-        Sign in to <span className="text-blue-600">Blueberry CRM</span>
+        Sign in to <span className="text-blue-800">Blueberry CRM</span>
       </h2>
 
       {/* Error Message */}
