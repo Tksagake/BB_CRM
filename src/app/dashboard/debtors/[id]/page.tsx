@@ -428,7 +428,7 @@ export default function DebtorDetailsPage() {
       doc.setFontSize(11);
       doc.text("Our Ref:", 15, yOffset);
       doc.setFont("times", "normal");
-      doc.text("SNI/CRMD/2025", 45, yOffset);
+      doc.text("BVL/CRMD/2025", 45, yOffset);
       // Debtor Details Section
        yOffset += 8;
        doc.setFont("times", "bold");
@@ -456,7 +456,7 @@ export default function DebtorDetailsPage() {
       // Title
       yOffset += 15;
       doc.setFontSize(12);
-      doc.text(`RE: DEMAND OF KES ${debtor?.debt_amount.toLocaleString()} AS OWED TO ${debtor?.client}.`, 15, yOffset);
+      doc.text(`RE: DEMAND OF KES ${debtor?.debt_amount.toLocaleString()}.`, 15, yOffset);
 
       // Body Text (Moved Lower)
       yOffset += 10;
@@ -464,7 +464,7 @@ export default function DebtorDetailsPage() {
       doc.setFont("times", "normal");
 
       const bodyText = `
-  We refer to the subject and contractual agreement with our ${debtor?.client} branch.
+  We refer to the subject and contractual agreement with us.
 
   Please note that you have failed to honour payments, neglected and/or refused to pay back KES ${debtor?.debt_amount.toLocaleString()} owed to our branch ${debtor?.client} for account(s)- ${debtor?.debtor_name}.
 
@@ -478,7 +478,7 @@ export default function DebtorDetailsPage() {
 
   Be advised accordingly and oblige to avoid escalation.
 
-  Payment to be made directly to ${debtor?.client}.
+  Payment to be made directly to US!
   `;
 
       const textLines = doc.splitTextToSize(bodyText, 180);
@@ -507,14 +507,14 @@ doc.text("Blueberry Voyage Ltd", 15, yOffset + 10);
             doc.setTextColor(150, 0, 0); // Dark Red for emphasis
             doc.setTextColor(128, 0, 128); // Purple color
             doc.setFontSize(10);
-            doc.text("8th Floor, Western Heights, Karuna Rd, Westland, Nairobi| E: info@blueberry-travel.com W: www.blueberry-travel.com", doc.internal.pageSize.width / 2, footerY + 12, { align: "center" });
+            doc.text("1210-1211, Regal Tower, Business Bay, Dubai, United Arab Emirates| E: info@blueberry-travel.com W: www.blueberry-travel.com", doc.internal.pageSize.width / 2, footerY + 12, { align: "center" });
             doc.text("Mobile: +254 700 314 522 | Office: +254 720 856 052", doc.internal.pageSize.width / 2, footerY + 17, { align: "center" });
             doc.setTextColor(0, 0, 0); // Reset to black color
         };
 
         // Call footer function before saving
         await renderDebtCardFooter(doc, currentTimestamp);
-        doc.save(`Sary_Demand_Letter_${debtor?.debtor_name}.pdf`);
+        doc.save(`BB_Demand_Letter_${debtor?.debtor_name}.pdf`);
     } catch (error) {
       alert(error);
     }
@@ -690,7 +690,7 @@ const downloadStatement = async () => {
 
         // Call footer function before saving
         await renderDebtCardFooter(doc, currentTimestamp);
-        doc.save(`Sary_Statement_${debtor?.debtor_name}.pdf`);
+        doc.save(`BB_Statement_${debtor?.debtor_name}.pdf`);
     } catch (error) {
         alert(error);
     }
@@ -837,7 +837,7 @@ const downloadStatement = async () => {
     doc.text(`Generated on: ${currentTimestamp} by: ${userData?.full_name}`, 15, doc.internal.pageSize.height - 30);
 
     // Save the document
-    doc.save(`Sary_Debt_Card_${debtor?.debtor_name}.pdf`);
+    doc.save(`BB_Debt_Card_${debtor?.debtor_name}.pdf`);
   } catch (error) {
     alert(error);
   }
@@ -1037,7 +1037,7 @@ const initiateCall = (phoneNumber: string) => {
         </div>
 
         <div className="flex gap-6">
-  {userRole !== 'client' && (
+  
     <>
    {/* Follow-Up Section */}
 <div className="bg-white p-6 rounded-lg shadow-md mb-6 flex-1">
@@ -1139,7 +1139,7 @@ const initiateCall = (phoneNumber: string) => {
         </button>
       </div>
     </>
-  )}
+  
 </div>
 
 {/* PtP History */}
