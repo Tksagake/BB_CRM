@@ -44,7 +44,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative text-black">
       <input
         type="text"
         placeholder="Search debtors..."
