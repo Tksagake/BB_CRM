@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download CSV</title>
+</head>
+<body>
+  <button id="downloadCsv">Download CSV</button>
+
+  <script>
+    // CSV data
+    const csvData = [
+      ["debtor_name", "client", "debtor_phone", "debt_amount"],
+      ["John Doe", "STAKE KENYA SACCO", "0712345678", "50000"],
+      ["Jane Wanjiku", "VIVACEKENYA SACCO", "0712345679", "70000"],
+      ["Mark Otieno", "STAKE KENYA SACCO", "0712345680", "30000"],
+    ];
+
+    // Convert the array to a CSV string
+    const csvString = csvData.map(row => row.join(",")).join("\n");
+
+    // Function to trigger the download
+    function downloadCsv(filename, content) {
+      const blob = new Blob([content], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Add event listener to the button
+    //Wueeeeeeeeeeeeeeeeeh
+    //Wueeeeeeeeeeeeeeeeeh
+    //Wueeeeeeeeeeeeeeeeeh
+    //Wueeeeeeeeeeeeeeeeeh
+    //Wueeeeeeeeeeeeeeeeeh
+    document.getElementById("downloadCsv").addEventListener("click", () => {
+      downloadCsv("debtors.csv", csvString);
+    });
+  </script>
+</body>
+</html>
