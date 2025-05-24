@@ -1039,61 +1039,55 @@ const initiateCall = (phoneNumber: string) => {
         <div className="flex gap-6">
   
     <>
-   {/* Follow-Up Section */}
-<div className="bg-white p-6 rounded-lg shadow-md mb-6 flex-1">
-  <h3 className="text-xl font-semibold">Follow-Up Details</h3>
+  <div className="bg-white p-6 rounded-lg shadow-md mb-6 flex-1">
+        <h3 className="text-xl font-semibold">Follow-Up Details</h3>
 
-  <label className="block">Update Follow-Up Stage:</label>
-  <select
-    className="border p-2 rounded-md w-full"
-    value={dealStage}
-    onChange={(e) => setDealStage(e.target.value)}
-  >
-    <option value="" disabled>Select Follow-Up Stage</option>
-    {dealStages.map((stage) => (
-      <option key={stage.value} value={stage.value}>
-        {stage.label}
-      </option>
-    ))}
-  </select>
+        <label className="block">Update Follow-Up Stage:</label>
+        <select
+          className="border p-2 rounded-md w-full"
+          value={dealStage}
+          onChange={(e) => setDealStage(e.target.value)}
+        >
+          <option value="" disabled>Select Follow-Up Stage</option>
+          {dealStages.map((stage) => (
+            <option key={stage.value} value={stage.value}>
+              {stage.label}
+            </option>
+          ))}
+        </select>
 
-  <label className="block">Next Follow-Up Date:</label>
-  <input
-  className="border p-2 rounded-md w-full"
-  type="date"
-  value={followUpDate}
-  min={new Date().toISOString().split("T")[0]} // Today
-  max={
-    dealStage === "45"
-      ? undefined // No limit for dealStage 45
-      : ["23", "7", "8"].includes(dealStage)
-      ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0] // Restrict to today + 30 days
-      : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0] // Restrict to today + 7 days
-  }
-  onChange={(e) => setFollowUpDate(e.target.value)}
-/>
+        <label className="block">Next Follow-Up Date:</label>
+        <input
+          className="border p-2 rounded-md w-full"
+          type="date"
+          value={followUpDate}
+          min={new Date().toISOString().split("T")[0]}
+          max={
+            dealStage === "45"
+              ? undefined
+              : ["23", "7", "8"].includes(dealStage)
+              ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0]
+              : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0]
+          }
+          onChange={(e) => setFollowUpDate(e.target.value)}
+        />
 
+        <label className="block">Notes:</label>
+        <textarea
+          className="border p-2 rounded-md w-full"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+        />
 
-  <label className="block">Notes:</label>
-  <textarea
-    className="border p-2 rounded-md w-full"
-    value={notes}
-    onChange={(e) => setNotes(e.target.value)}
-  />
+        <button
+          onClick={updateDebtor}
+          className="bg-blue-600 text-white px-4 py-2 rounded-md mt-4"
+        >
+          Save Follow-up Details
+        </button>
+      </div>
+    
 
-  <button
-    onClick={() => {
-      if (!dealStage) {
-        alert("Please select a valid Follow-Up Stage.");
-        return;
-      }
-      updateDebtor();
-    }}
-    className="bg-blue-600 text-white px-4 py-2 rounded-md mt-4"
-  >
-    Save Follow-up Details
-  </button>
-</div>
 
 
       {/* PtP Form */}
