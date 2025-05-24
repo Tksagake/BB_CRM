@@ -75,7 +75,7 @@ export default function DebtorDetailsPage() {
   };
 
   const [colorIndex, setColorIndex] = useState(0);
-  
+
     useEffect(() => {
       const interval = setInterval(() => {
         setColorIndex((prev) => (prev + 1) % colorCycle.length);
@@ -215,8 +215,31 @@ export default function DebtorDetailsPage() {
     fetchAgents();
   }, [supabase]);
 
+  const validateFollowUpDate = (date: string | number | Date, stage: string) => {
+    const selectedDate = new Date(date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (stage === "45") {
+      return true; // No date restriction for stage 45
+    } else if (["23", "7", "8"].includes(stage)) {
+      const maxDate = new Date();
+      maxDate.setDate(today.getDate() + 30);
+      return selectedDate <= maxDate;
+    } else {
+      const maxDate = new Date();
+      maxDate.setDate(today.getDate() + 7);
+      return selectedDate <= maxDate;
+    }
+  };
+
   async function updateDebtor() {
     try {
+      if (!validateFollowUpDate(followUpDate, dealStage)) {
+        alert("The selected follow-up date is not valid for the current deal stage.");
+        return;
+      }
+
       const { error: followUpError } = await supabase.from("follow_ups").insert({
         debtor_id: id,
         status: dealStage,
@@ -937,7 +960,7 @@ const initiateCall = (phoneNumber: string) => {
             await router.push("/login");
           }} />
         </div>
-  
+
         {/* Main Loading Area */}
         <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-64'} flex items-center justify-center`}>
           <div className="text-center">
@@ -1010,7 +1033,6 @@ const initiateCall = (phoneNumber: string) => {
   </button>
 </div>
 
-       
         {/* Debtor Basic Info */}
         <div className="bg-white p-6 rounded-lg shadow-md mb-6">
           <h3 className="text-xl font-semibold">Basic Information</h3>
@@ -1037,7 +1059,7 @@ const initiateCall = (phoneNumber: string) => {
         </div>
 
         <div className="flex gap-6">
-  
+
     <>
   <div className="bg-white p-6 rounded-lg shadow-md mb-6 flex-1">
         <h3 className="text-xl font-semibold">Follow-Up Details</h3>
@@ -1086,9 +1108,6 @@ const initiateCall = (phoneNumber: string) => {
           Save Follow-up Details
         </button>
       </div>
-    
-
-
 
       {/* PtP Form */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-6 flex-1">
@@ -1133,7 +1152,6 @@ const initiateCall = (phoneNumber: string) => {
         </button>
       </div>
     </>
-  
 </div>
 
 {/* PtP History */}
