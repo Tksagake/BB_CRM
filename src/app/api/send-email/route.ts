@@ -38,7 +38,7 @@ export const POST = async (req: NextRequest) => {
 
     // Set up email data with HTML content
     const mailOptions = {
-        from: `Sary Network International LTD <${gmailUser}>`,
+        from: `Blueberry Voyage LTD <${gmailUser}>`,
         to: email,
         subject: subject,
         html: `

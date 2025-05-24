@@ -5,13 +5,12 @@ interface DashboardHeaderProps {
 }
 
 const motivationalQuotes = [
- 
-  "Sary Networks International LTD wishes you a great day!",
+  "The only limit to our realization of tomorrow is our doubts of today.",
+  "The future belongs to those who believe in the beauty of their dreams.",
   "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
   "The only way to do great work is to love what you do.",
   "Believe you can and you're halfway there.",
   "Success usually comes to those who are too busy to be looking for it.",
-  
 ];
 
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userFullName }) => {
@@ -46,7 +45,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userFullName }) => {
   }, [currentTime]);
 
   return (
-    <div className="bg-gradient-to-br from-blue-600 via-purple-500 to-pink-500 p-8 rounded-2xl shadow-2xl mb-6 text-white relative overflow-hidden">
+    <div className="bg-gradient-to-br from-blue-800 to-blue-500 p-8 rounded-2xl shadow-2xl mb-6 text-white relative overflow-hidden">
       {/* Floating Glow Effect */}
       <div className="absolute inset-0 bg-white opacity-10 blur-xl"></div>
 
