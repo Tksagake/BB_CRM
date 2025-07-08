@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Navbar from "@/components/Navbar";
@@ -45,7 +44,6 @@ export default function MonthlyReportsPage() {
 
   async function fetchData() {
     setLoading(true);
-
     try {
       // Calculate the start and end dates of the selected month
       const startDate = new Date(month);
@@ -112,8 +110,17 @@ export default function MonthlyReportsPage() {
 
       if (ptpError) throw ptpError;
 
-      // Calculate agent performance based on payments
-      const agentPerformanceMap = new Map<string, { payments: number; followUps: number; ptps: number }>();
+      // Fetch call logs for the selected month
+      const { data: callLogsData, error: callLogsError } = await supabase
+        .from("call_logs")
+        .select("*")
+        .gte("start_time", startDate.toISOString())
+        .lte("start_time", endDate.toISOString());
+
+      if (callLogsError) throw callLogsError;
+
+      // Calculate agent performance based on payments, follow-ups, PTPs, and calls
+      const agentPerformanceMap = new Map<string, { payments: number; followUps: number; ptps: number; calls: number }>();
 
       for (const payment of payments) {
         // Fetch the debtor to get the assigned agent ID
@@ -134,12 +141,14 @@ export default function MonthlyReportsPage() {
             payments: existing.payments + amount,
             followUps: existing.followUps,
             ptps: existing.ptps,
+            calls: existing.calls,
           });
         } else {
           agentPerformanceMap.set(agentId, {
             payments: amount,
             followUps: 0,
             ptps: 0,
+            calls: 0,
           });
         }
       }
@@ -153,12 +162,14 @@ export default function MonthlyReportsPage() {
               payments: existing.payments,
               followUps: existing.followUps + 1,
               ptps: existing.ptps,
+              calls: existing.calls,
             });
           } else {
             agentPerformanceMap.set(agentId, {
               payments: 0,
               followUps: 1,
               ptps: 0,
+              calls: 0,
             });
           }
         }
@@ -173,13 +184,40 @@ export default function MonthlyReportsPage() {
               payments: existing.payments,
               followUps: existing.followUps,
               ptps: existing.ptps + 1,
+              calls: existing.calls,
             });
           } else {
             agentPerformanceMap.set(agentId, {
               payments: 0,
               followUps: 0,
               ptps: 1,
+              calls: 0,
             });
+          }
+        }
+      });
+
+      callLogsData?.forEach((callLog) => {
+        if (callLog.receiver_name) {
+          const agent = agentsData?.find(agent => agent.full_name === callLog.receiver_name);
+          if (agent) {
+            const agentId = agent.id;
+            if (agentPerformanceMap.has(agentId)) {
+              const existing = agentPerformanceMap.get(agentId)!;
+              agentPerformanceMap.set(agentId, {
+                payments: existing.payments,
+                followUps: existing.followUps,
+                ptps: existing.ptps,
+                calls: existing.calls + 1,
+              });
+            } else {
+              agentPerformanceMap.set(agentId, {
+                payments: 0,
+                followUps: 0,
+                ptps: 0,
+                calls: 1,
+              });
+            }
           }
         }
       });
@@ -191,6 +229,7 @@ export default function MonthlyReportsPage() {
         payments: agentPerformanceMap.get(agent.id)?.payments || 0,
         followUps: agentPerformanceMap.get(agent.id)?.followUps || 0,
         ptps: agentPerformanceMap.get(agent.id)?.ptps || 0,
+        calls: agentPerformanceMap.get(agent.id)?.calls || 0,
       })) || [];
 
       setClientDebts([]); // Not used in this version
@@ -232,12 +271,13 @@ export default function MonthlyReportsPage() {
     doc.text("Monthly Report", 20, 10);
     autoTable(doc, {
       startY: 20,
-      head: [["Account Manager", "Payments Collected", "Follow-Ups", "PTPs"]],
+      head: [["Account Manager", "Payments Collected", "Follow-Ups", "PTPs", "Calls"]],
       body: agentPerformance.map((agent) => [
         agent.agentName,
         `KES ${agent.payments.toLocaleString()}`,
         agent.followUps,
         agent.ptps,
+        agent.calls,
       ]),
     });
     doc.save("Monthly_Report.pdf");
@@ -255,10 +295,9 @@ export default function MonthlyReportsPage() {
 
   return (
     <div className="flex min-h-screen w-full">
-       <Navbar handleLogout={async () => { await supabase.auth.signOut(); await router.push("/login"); }} />
+      <Navbar handleLogout={async () => { await supabase.auth.signOut(); await router.push("/login"); }} />
       <main className="ml-64 flex-1 p-8">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">📊 Monthly Reports</h2>
-
         {/* Month Selector */}
         <div className="mb-6">
           <label className="block font-medium">Select Month:</label>
@@ -269,7 +308,6 @@ export default function MonthlyReportsPage() {
             className="border p-2 rounded-md w-full"
           />
         </div>
-
         {loading ? (
           <p>Loading reports...</p>
         ) : (
@@ -279,7 +317,6 @@ export default function MonthlyReportsPage() {
               <h3 className="text-lg font-semibold mb-4">💰 Payment Collection Trend</h3>
               <Bar data={paymentChartData} />
             </div>
-
             {/* Agent Performance */}
             <div className="bg-white p-6 shadow-md rounded-lg mb-6">
               <h3 className="text-lg font-semibold mb-4">👤 Account Managers Performance</h3>
@@ -290,6 +327,7 @@ export default function MonthlyReportsPage() {
                     <th className="text-left">Payments Collected</th>
                     <th className="text-left">Follow-Ups</th>
                     <th className="text-left">PTPs</th>
+                    <th className="text-left">Calls</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -299,12 +337,12 @@ export default function MonthlyReportsPage() {
                       <td>KES {agent.payments.toLocaleString()}</td>
                       <td>{agent.followUps}</td>
                       <td>{agent.ptps}</td>
+                      <td>{agent.calls}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-
             {/* Download Reports */}
             <div className="flex gap-4">
               <button onClick={downloadPDF} className="bg-red-600 text-white px-4 py-2 rounded-md">
