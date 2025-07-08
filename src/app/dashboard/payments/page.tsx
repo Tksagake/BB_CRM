@@ -129,7 +129,7 @@ export default function PaymentsPage() {
 
   // Function to download approved payments as CSV
   const downloadCsv = () => {
-    const headers = ["Debtor Name", "Client", "Collection Officer", "Amount", "Payment Date"]; // Updated headers
+    const headers = ["Debtor Name", "Branch", "Collection Officer", "Amount", "Payment Date"]; // Updated headers
     const rows = payments
       .filter((payment) => payment.verified)
       .map((payment) => [

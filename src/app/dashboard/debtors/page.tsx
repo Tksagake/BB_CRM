@@ -27,7 +27,7 @@ const dealStages = [
   { value: "23", label: "PTP" },
   { value: "7", label: "Scheduled Payment" },
   { value: "8", label: "One-Off Payment" },
-  { value: "9", label: "Payment Confirmed by Client" },
+  { value: "9", label: "Payment Confirmed by Branch Manager" },
   { value: "10", label: "Debt Settled" },
   { value: "14", label: "Non-Committal" },
   { value: "11", label: "Disputing" },
@@ -269,7 +269,7 @@ export default function DebtorsPage() {
 
     const headers = [
       "Debtor Name",
-      "Client",
+      "Branch (Manager)",
       "Phone",
       "Total Debt",
       "Total Paid",
@@ -560,7 +560,7 @@ export default function DebtorsPage() {
                 <th className="px-4 py-2 border">Total Paid</th>
                 <th className="px-4 py-2 border">Remaining Balance</th>
                 <th className="px-4 py-2 border">Next Follow-Up</th>
-                {userRole !== "client" && <th className="px-4 py-2 border">Account Manager</th>}
+                <th className="px-4 py-2 border">Account Manager</th>
                 <th className="px-4 py-2 border">Deal Stage</th>
                 {userRole === "admin" && <th className="px-4 py-2 border">Actions</th>}
               </tr>
@@ -587,9 +587,9 @@ export default function DebtorsPage() {
                   <td className="px-4 py-2 border">KES {debtor.total_paid.toLocaleString()}</td>
                   <td className="px-4 py-2 border">KES {debtor.balance_due.toLocaleString()}</td>
                   <td className="px-4 py-2 border">{debtor.next_followup_date}</td>
-                  {userRole !== "client" && (
+                  
                     <td className="px-4 py-2 border">{debtor.users?.full_name || "Unassigned"}</td>
-                  )}
+                  
                   <td className="px-4 py-2 border">{debtor.deal_stage_label}</td>
                   {userRole === "admin" && (
                     <td className="px-4 py-2 border text-center" onClick={(e) => e.stopPropagation()}>

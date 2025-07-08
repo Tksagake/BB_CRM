@@ -65,7 +65,7 @@ export default function ImportDebtorsPage() {
       return;
     }
     if (!client || !product) {
-      showMessage("Client and Product fields are required.", "error");
+      showMessage("Branch and Product fields are required.", "error");
       return;
     }
 

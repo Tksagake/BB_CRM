@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "B.B CRM",
+  title: "BlueBerry CRM",
   description: "Powered by Sary",
 };
 

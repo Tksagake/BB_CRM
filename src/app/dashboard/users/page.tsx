@@ -220,10 +220,10 @@ export default function UsersPage() {
               <input type="email" placeholder="Email" className="border p-2 rounded-md w-full mb-4" value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} />
               <input type="password" placeholder="Password" className="border p-2 rounded-md w-full mb-4" value={newUser.password} onChange={(e) => setNewUser({ ...newUser, password: e.target.value })} />
               <input type="text" placeholder="Phone (Optional)" className="border p-2 rounded-md w-full mb-4" value={newUser.phone} onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })} />
-                <input type="text" placeholder="Client Company (Optional)" className="border p-2 rounded-md w-full mb-4" value={newUser.client_company} onChange={(e) => setNewUser({ ...newUser, client_company: e.target.value })} />
+                <input type="text" placeholder="Office (Optional)" className="border p-2 rounded-md w-full mb-4" value={newUser.client_company} onChange={(e) => setNewUser({ ...newUser, client_company: e.target.value })} />
                 <select className="border p-2 rounded-md w-full mb-4" value={newUser.role} onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}>
-                  <option value="agent">Agent</option>
-                  <option value="client">Client</option>
+                  <option value="agent">Account Manager</option>
+                  <option value="client">Branch Manager</option>
                   <option value="admin">Admin</option>
                 </select>
                 <div className="flex">
@@ -241,10 +241,10 @@ export default function UsersPage() {
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Edit User</h3>
               <input type="text" placeholder="Full Name" className="border p-2 rounded-md w-full mb-4" value={selectedUser.full_name} onChange={(e) => setSelectedUser({ ...selectedUser, full_name: e.target.value })} />
               <input type="text" placeholder="Phone" className="border p-2 rounded-md w-full mb-4" value={selectedUser.phone} onChange={(e) => setSelectedUser({ ...selectedUser, phone: e.target.value })} />
-                <input type="text" placeholder="Client Company" className="border p-2 rounded-md w-full mb-4" value={selectedUser.client_company} onChange={(e) => setSelectedUser({ ...selectedUser, client_company: e.target.value })} />
+                <input type="text" placeholder="Office" className="border p-2 rounded-md w-full mb-4" value={selectedUser.client_company} onChange={(e) => setSelectedUser({ ...selectedUser, client_company: e.target.value })} />
                 <select className="border p-2 rounded-md w-full mb-4" value={selectedUser.role} onChange={(e) => setSelectedUser({ ...selectedUser, role: e.target.value })}>
-                  <option value="agent">Agent</option>
-                  <option value="client">Client</option>
+                  <option value="agent">Account Manager</option>
+                  <option value="client">Branch Manager</option>
                   <option value="admin">Admin</option>
                 </select>
                 <button onClick={() => setShowEditModal(false)} className="bg-gray-500 text-white px-4 py-2 rounded-md mr-2">Cancel</button>

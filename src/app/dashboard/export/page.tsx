@@ -108,7 +108,7 @@ export default function ExportDebtorsPage() {
     // Export as CSV
     const headers = [
       "Debtor Name",
-      "Client",
+      "Branch (Manager)",
       "Phone",
       "Total Debt",
       "Total Paid",
