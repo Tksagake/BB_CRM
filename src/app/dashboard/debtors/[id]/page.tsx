@@ -431,8 +431,8 @@ export default function DebtorDetailsPage() {
       const currentTimestamp = new Date().toLocaleString();
 
       // Cloudinary Image URLs
-      const logoUrl = "https://res.cloudinary.com/dylmsnibf/image/upload/v1741289166/unnamed_1_uptcpl.png";
-      const signatureUrl = "https://res.cloudinary.com/dylmsnibf/image/upload/v1741969895/WhatsApp_Image_2025-03-14_at_19.23.39_6437f7fa-removebg-preview_k1r8kl.png";
+      const logoUrl = '/bblogomain.png';
+      const signatureUrl = '/bblogomain.png';
 
       // Load images
       const [logo, signature] = await Promise.all([loadImage(logoUrl), loadImage(signatureUrl)]);
@@ -451,7 +451,7 @@ export default function DebtorDetailsPage() {
       doc.setFontSize(11);
       doc.text("Our Ref:", 15, yOffset);
       doc.setFont("times", "normal");
-      doc.text("BVL/CRMD/2025", 45, yOffset);
+      doc.text("BB/CRM/2025", 45, yOffset);
       // Debtor Details Section
        yOffset += 8;
        doc.setFont("times", "bold");
